@@ -215,33 +215,33 @@ const CATALOGO = [
       "Butacas de cuero comfort con ajuste eléctrico y memoria",
     ],
   },
-  { marca: "Suzuki", modelo: "S-Presso 1.0 GLX", año: "2020", km: "53.137", precio: "$5.980.000", comb: "Gasolina", trans: "Manual", estado: "Recién llegado", patente: "PGPY52", fotos: SPRESSO_PHOTOS },
-  { marca: "Jeep", modelo: "Wrangler Unlimited Sahara 3.6", año: "2020", km: "57.000", precio: "$43.480.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "LWYJ64" },
-  { marca: "Ford", modelo: "F-150 Platinum 3.5", año: "2022", km: "64.900", precio: "$40.480.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "RLGB17" },
-  { marca: "Audi", modelo: "Q2 35 TFSI", año: "2023", km: "34.000", precio: "$22.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "SWHJ27" },
-  { marca: "Peugeot", modelo: "5008 Active BlueHDI 130", año: "2021", km: "38.203", precio: "$19.980.000", comb: "Diésel", trans: "Automática", estado: "Disponible", patente: "RFJJ35" },
-  { marca: "Renault", modelo: "Koleos Expression 2.0", año: "2015", km: "56.200", precio: "$6.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "GYVL87" },
-  { marca: "BMW", modelo: "X1 18i sDrive", año: "2024", km: "41.000", precio: "$29.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "SZYY55" },
-  { marca: "BMW", modelo: "X6 M Sport 40i xDrive", año: "2024", km: "20.000", precio: "$73.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "TPSV28" },
-  { marca: "Peugeot", modelo: "3008 GT Black Pack BlueHDI 130", año: "2023", km: "45.181", precio: "$19.980.000", comb: "Diésel", trans: "Automática", estado: "Disponible", patente: "SYZG89" },
-  { marca: "Peugeot", modelo: "208 Allure MHEV 136", año: "2026", km: "5.000", precio: "$16.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "VWVC54" },
-  { marca: "Peugeot", modelo: "Landtrek Action4 THP 210", año: "2023", km: "5.300", precio: "$19.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "SRVW83" },
-  { marca: "Peugeot", modelo: "3008 Allure Pack THP 165", año: "2022", km: "37.000", precio: "$16.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "RYKP99" },
-  { marca: "INFINITI", modelo: "QX50 Sensory AWD", año: "2019", km: "92.000", precio: "$19.000.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "LJHL85" },
-  { marca: "Mazda", modelo: "BT-50 3.2 DSL 4WD", año: "2022", km: "130.000", precio: "$23.480.000", comb: "Diésel", trans: "Automática", estado: "Disponible", patente: "RLTF54" },
-  { marca: "Audi", modelo: "A4 35 TFSI", año: "2024", km: "65.000", precio: "$27.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "TFST58" },
-  { marca: "Mercedes-Benz", modelo: "GLE 350d 4Matic", año: "2017", km: "106.000", precio: "$29.980.000", comb: "Diésel", trans: "Automática", estado: "Disponible", patente: "JCZF51" },
-  { marca: "Volvo", modelo: "EX30 Ultra Eléctrico", año: "2025", km: "19.000", precio: "$32.980.000", comb: "Eléctrico", trans: "Automática", estado: "Disponible", patente: "TVDZ27" },
-  { marca: "Ford", modelo: "Explorer Limited EcoBoost", año: "2023", km: "50.000", precio: "$29.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "SXBX13" },
-  { marca: "BMW", modelo: "X3 20i sDrive", año: "2023", km: "40.000", precio: "$36.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "SXWG47" },
-  { marca: "Hyundai", modelo: "Palisade Premium AWD", año: "2022", km: "94.000", precio: "$28.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "SWFG64" },
-  { marca: "Citroën", modelo: "C3 Feel BlueHDI", año: "2024", km: "57.000", precio: "$10.980.000", comb: "Diésel", trans: "Manual", estado: "Disponible", patente: "TFWX27" },
-  { marca: "BMW", modelo: "330i", año: "2008", km: "210.000", precio: "$14.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "BFHJ21" },
-  { marca: "Audi", modelo: "A5 40 TFSI", año: "2022", km: "45.000", precio: "$33.480.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "RJLD99" },
-  { marca: "Audi", modelo: "Q8 55 TFSI Quattro", año: "2021", km: "60.000", precio: "$47.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "PBCP50" },
-  { marca: "Jeep", modelo: "Compass Longitude", año: "2024", km: "2.980", precio: "$20.480.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "TJJW15" },
-  { marca: "Honda", modelo: "HR-V EX CVT", año: "2024", km: "59.000", precio: "$19.980.000", comb: "Gasolina", trans: "Automática", estado: "Recién llegado", patente: "SZYB12" },
-  { marca: "Mercedes-Benz", modelo: "A 200 Progressive", año: "2019", km: "70.000", precio: "$18.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible", patente: "LBBH91" },
+  { marca: "Suzuki", modelo: "S-Presso 1.0 GLX", año: "2020", km: "53.137", precio: "$5.980.000", comb: "Gasolina", trans: "Manual", estado: "Recién llegado", fotos: SPRESSO_PHOTOS },
+  { marca: "Jeep", modelo: "Wrangler Unlimited Sahara 3.6", año: "2020", km: "57.000", precio: "$43.480.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "Ford", modelo: "F-150 Platinum 3.5", año: "2022", km: "64.900", precio: "$40.480.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "Audi", modelo: "Q2 35 TFSI", año: "2023", km: "34.000", precio: "$22.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "Peugeot", modelo: "5008 Active BlueHDI 130", año: "2021", km: "38.203", precio: "$19.980.000", comb: "Diésel", trans: "Automática", estado: "Disponible" },
+  { marca: "Renault", modelo: "Koleos Expression 2.0", año: "2015", km: "56.200", precio: "$6.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "BMW", modelo: "X1 18i sDrive", año: "2024", km: "41.000", precio: "$29.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "BMW", modelo: "X6 M Sport 40i xDrive", año: "2024", km: "20.000", precio: "$73.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "Peugeot", modelo: "3008 GT Black Pack BlueHDI 130", año: "2023", km: "45.181", precio: "$19.980.000", comb: "Diésel", trans: "Automática", estado: "Disponible" },
+  { marca: "Peugeot", modelo: "208 Allure MHEV 136", año: "2026", km: "5.000", precio: "$16.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "Peugeot", modelo: "Landtrek Action4 THP 210", año: "2023", km: "5.300", precio: "$19.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "Peugeot", modelo: "3008 Allure Pack THP 165", año: "2022", km: "37.000", precio: "$16.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "INFINITI", modelo: "QX50 Sensory AWD", año: "2019", km: "92.000", precio: "$19.000.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "Mazda", modelo: "BT-50 3.2 DSL 4WD", año: "2022", km: "130.000", precio: "$23.480.000", comb: "Diésel", trans: "Automática", estado: "Disponible" },
+  { marca: "Audi", modelo: "A4 35 TFSI", año: "2024", km: "65.000", precio: "$27.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "Mercedes-Benz", modelo: "GLE 350d 4Matic", año: "2017", km: "106.000", precio: "$29.980.000", comb: "Diésel", trans: "Automática", estado: "Disponible" },
+  { marca: "Volvo", modelo: "EX30 Ultra Eléctrico", año: "2025", km: "19.000", precio: "$32.980.000", comb: "Eléctrico", trans: "Automática", estado: "Disponible" },
+  { marca: "Ford", modelo: "Explorer Limited EcoBoost", año: "2023", km: "50.000", precio: "$29.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "BMW", modelo: "X3 20i sDrive", año: "2023", km: "40.000", precio: "$36.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "Hyundai", modelo: "Palisade Premium AWD", año: "2022", km: "94.000", precio: "$28.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "Citroën", modelo: "C3 Feel BlueHDI", año: "2024", km: "57.000", precio: "$10.980.000", comb: "Diésel", trans: "Manual", estado: "Disponible" },
+  { marca: "BMW", modelo: "330i", año: "2008", km: "210.000", precio: "$14.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "Audi", modelo: "A5 40 TFSI", año: "2022", km: "45.000", precio: "$33.480.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "Audi", modelo: "Q8 55 TFSI Quattro", año: "2021", km: "60.000", precio: "$47.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "Jeep", modelo: "Compass Longitude", año: "2024", km: "2.980", precio: "$20.480.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
+  { marca: "Honda", modelo: "HR-V EX CVT", año: "2024", km: "59.000", precio: "$19.980.000", comb: "Gasolina", trans: "Automática", estado: "Recién llegado" },
+  { marca: "Mercedes-Benz", modelo: "A 200 Progressive", año: "2019", km: "70.000", precio: "$18.980.000", comb: "Gasolina", trans: "Automática", estado: "Disponible" },
 ];
 
 const ESTADO_STYLE = {
@@ -558,7 +558,6 @@ function Catalogo({ openVehicle }) {
                 <div style={{ padding: 22 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
                     <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11.5, color: C.steel, letterSpacing: 1, textTransform: "uppercase" }}>{v.marca}</div>
-                    {v.patente && <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: C.steel }}>{v.patente}</div>}
                   </div>
                   <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 24, color: C.black, margin: "4px 0 14px", textTransform: "uppercase" }}>{v.modelo}</h3>
                   <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 16 }}>
@@ -679,12 +678,6 @@ function VehicleDetail({ v, go }) {
                 <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10.5, color: C.steel, textTransform: "uppercase", letterSpacing: 1 }}>Transmisión</div>
                 <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 15, color: C.black, marginTop: 2, display: "flex", alignItems: "center", gap: 6 }}><Settings2 size={14} />{v.trans}</div>
               </div>
-              {v.patente && (
-                <div>
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10.5, color: C.steel, textTransform: "uppercase", letterSpacing: 1 }}>Patente</div>
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 15, color: C.black, marginTop: 2 }}>{v.patente}</div>
-                </div>
-              )}
               {v.motor && (
                 <div style={{ gridColumn: "1 / -1" }}>
                   <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10.5, color: C.steel, textTransform: "uppercase", letterSpacing: 1 }}>Motor</div>
