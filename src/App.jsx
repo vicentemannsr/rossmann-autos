@@ -611,9 +611,9 @@ function VehicleDetail({ v, go }) {
         <div className="two-col-grid" style={{ gap: 44 }}>
           <Reveal>
             {photos ? (
-              <div style={{ maxWidth: 480, margin: "0 auto", textAlign: "center" }}>
-                <div style={{ position: "relative", display: "inline-block", maxWidth: "100%", background: C.black, overflow: "hidden", borderRadius: 4, textAlign: "left" }}>
-                  <img src={photos[idx]} alt="" style={{ maxWidth: "100%", maxHeight: "70vh", width: "auto", height: "auto", objectFit: "contain", display: "block" }} />
+              <div style={{ maxWidth: 480, margin: "0 auto", width: "100%" }}>
+                <div style={{ position: "relative", width: "100%", background: C.black, overflow: "hidden", borderRadius: 4 }}>
+                  <img src={photos[idx]} alt="" style={{ width: "100%", height: "auto", display: "block" }} />
                   {v.estado && (
                     <span style={{ position: "absolute", top: 14, right: 14, fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: 1, textTransform: "uppercase", padding: "5px 12px", borderRadius: 2, background: ESTADO_STYLE[v.estado]?.bg, color: ESTADO_STYLE[v.estado]?.fg }}>
                       {v.estado}
