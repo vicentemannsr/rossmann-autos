@@ -960,9 +960,11 @@ export default function App() {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { overflow-x: hidden; max-width: 100%; }
         body { -webkit-font-smoothing: antialiased; }
+        img { max-width: 100%; }
         button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid ${C.blueBright}; outline-offset: 2px; }
 
         .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; }
+        .two-col-grid > * { min-width: 0; }
         .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
         @media (max-width: 760px) {
