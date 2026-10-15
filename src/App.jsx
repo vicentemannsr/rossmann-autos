@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import {
   Car, Wrench, FileText, MapPin, Phone, Mail, ChevronRight,
   Menu, X, ArrowRight, Gauge, ShieldCheck, Handshake, Fuel,
-  Calendar, Settings2, ArrowUpRight, Truck, ClipboardCheck, PackageSearch, Laptop
+  Calendar, Settings2, ArrowUpRight, Truck, ClipboardCheck, PackageSearch, Laptop, Instagram
 } from "lucide-react";
 import STOCK from "./data/stock.json";
 
@@ -648,6 +648,9 @@ function VehicleDetail({ v, go }) {
               </Button>
               <Button variant="outlineDark" onClick={() => go("catalogo")} icon={false}>Ver más vehículos</Button>
             </div>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 18, fontFamily: "'Inter', sans-serif", fontSize: 13.5, color: C.steel, textDecoration: "none" }}>
+              <Instagram size={16} color={C.blue} /> Síguenos en Instagram para ver los nuevos ingresos antes que nadie
+            </a>
           </Reveal>
         </div>
       </div>
@@ -657,6 +660,7 @@ function VehicleDetail({ v, go }) {
 
 /* ---------- Page: Contacto ---------- */
 const WHATSAPP_NUM = "56983097794";
+const INSTAGRAM_URL = "https://www.instagram.com/rossmannautos/";
 const DIRECCION = "Av. Raúl Labbe 12650, Of. 302, Lo Barnechea, Santiago";
 const MAPS_DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(DIRECCION)}`;
 const WAZE_URL = `https://waze.com/ul?q=${encodeURIComponent(DIRECCION)}&navigate=yes`;
@@ -690,6 +694,7 @@ function Contacto() {
               { icon: MapPin, t: "Dirección", v: DIRECCION, href: MAPS_DIRECTIONS_URL },
               { icon: Phone, t: "Teléfono", v: "+56 9 8309 7794", href: `tel:+${WHATSAPP_NUM}` },
               { icon: Mail, t: "Email", v: "rossmannautos@gmail.com", href: "mailto:rossmannautos@gmail.com" },
+              { icon: Instagram, t: "Instagram", v: "@rossmannautos", href: INSTAGRAM_URL },
             ].map((it, i) => (
               <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                 <div style={{ background: C.black, width: 42, height: 42, borderRadius: 3, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -833,6 +838,9 @@ function Footer({ go }) {
             <a href="tel:+56983097794" style={{ color: "rgba(255,255,255,0.45)", textDecoration: "none" }}>+56 9 8309 7794</a><br />
             <a href="mailto:rossmannautos@gmail.com" style={{ color: "rgba(255,255,255,0.45)", textDecoration: "none" }}>rossmannautos@gmail.com</a>
           </p>
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 6, fontFamily: "'Inter', sans-serif", fontSize: 13.5, fontWeight: 600, color: C.white, textDecoration: "none" }}>
+            <Instagram size={18} color={C.blueBright} /> Síguenos en Instagram
+          </a>
         </div>
         <div style={{ display: "flex", gap: 40, flexWrap: "wrap" }}>
           <div>
