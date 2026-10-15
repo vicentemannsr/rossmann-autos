@@ -25,6 +25,18 @@
   cambios y él mismo hace commit + push. Vercel publica automáticamente
   cada vez que hay un push a la rama principal.
 
+## Actualizar el stock desde ChileAutos
+
+El catálogo se genera desde el Control Panel de ChileAutos (cp.chileautos.cl).
+Los datos viven en `src/data/stock.json`; las fotos se muestran directo desde
+el CDN de ChileAutos, así que no hay que subir imágenes al repo.
+
+1. Exportar el inventario "En stock" del Control Panel a `stock_chileautos.json`.
+2. `node scripts/import-chileautos.mjs stock_chileautos.json`
+3. Commit + push → Vercel publica.
+
+Las patentes del export se ignoran a propósito: no se publican en la web.
+
 ## Desarrollo local (opcional)
 
 ```
