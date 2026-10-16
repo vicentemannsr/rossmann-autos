@@ -38,6 +38,18 @@ function campo(desc, nombre) {
   return m ? m[1].trim().replace(/\.$/, "") : undefined;
 }
 
+// Quita emojis y viñetas decorativas (✔️ 📌 🔥 ✨ ▪ …) para que las publicaciones
+// se vean sobrias. Conserva ™ © ®.
+export function sinEmojis(texto) {
+  return texto
+    .replace(/(?![\u00A9\u00AE\u2122])[\p{Extended_Pictographic}\u25AA\u25AB\uFE0F\u200D\u20E3]/gu, "")
+    .split("\n")
+    .map((l) => l.replace(/[ \t]{2,}/g, " ").trim())
+    .filter((l, i, arr) => l !== "" || (i > 0 && arr[i - 1] !== ""))
+    .join("\n")
+    .trim();
+}
+
 function combustible(t, d) {
   const s = `${t} ${d}`.toUpperCase();
   if (/EL[EÉ]CTRICO/.test(t.toUpperCase()) || /100% EL[EÉ]CTRICO/.test(s)) return "Eléctrico";
@@ -60,7 +72,7 @@ const hoy = Date.now();
 const stock = raw.map((x) => {
   const marca = normMarca(x.mk);
   const año = String(x.y);
-  const desc = (x.d || "").replace(/\r/g, "").replace(/[ \t]+\n/g, "\n").replace(/\n{2,}/g, "\n").trim();
+  const desc = sinEmojis(x.d || "").replace(/\r/g, "").replace(/[ \t]+\n/g, "\n").replace(/\n{2,}/g, "\n").trim();
   const pie = desc.match(/desde\s+(?:un\s+)?(\d{1,2})\s*%/i);
   const dias = (hoy - Date.parse(x.cr)) / 86400000;
   const v = {
