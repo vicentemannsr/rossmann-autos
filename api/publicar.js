@@ -27,12 +27,17 @@ export default async function handler(req, res) {
   const { id, fotos, caption, destinos = ["instagram", "facebook"] } = req.body || {};
   const car = findCar(id);
   if (!car) return res.status(404).json({ error: "Auto no encontrado" });
+  const base = (s) => String(s).split("?")[0];
   const sel = (fotos && fotos.length ? fotos : car.fotos).slice(0, 10);
   if (!sel.length) return res.status(400).json({ error: "El auto no tiene fotos" });
+  // Facebook: las mismas 10 de Instagram primero y luego el resto en el orden de la web, hasta 20
+  const usadas = new Set(sel.map(base));
+  const selFb = [...sel, ...car.fotos.filter((f) => !usadas.has(base(f)))].slice(0, 20);
   if (!caption) return res.status(400).json({ error: "Falta el texto" });
 
   const site = process.env.SITE_URL || `https://${req.headers.host}`;
   const urls = sel.map((f) => photoUrl(site, f));
+  const urlsFb = selFb.map((f) => photoUrl(site, f));
 
   const out = {};
   if (destinos.includes("instagram")) {
@@ -44,7 +49,7 @@ export default async function handler(req, res) {
   }
   if (destinos.includes("facebook")) {
     try {
-      out.facebook = { ok: true, link: await publishFacebook(urls, caption) };
+      out.facebook = { ok: true, link: await publishFacebook(urlsFb, caption) };
     } catch (e) {
       out.facebook = { ok: false, error: e.message };
     }
