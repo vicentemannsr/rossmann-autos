@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Rossmann · Publicar en redes</title>
+<style>
+  :root { --bg:#0f1115; --card:#181b22; --line:#2a2f3a; --tx:#e8eaee; --mut:#9aa1ad; --acc:#3b82f6; --ok:#22c55e; --err:#ef4444; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:var(--bg); color:var(--tx); }
+  header { padding:16px 24px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:12px; }
+  header h1 { font-size:18px; margin:0; font-weight:600; }
+  header .st { margin-left:auto; font-size:13px; color:var(--mut); }
+  main { display:grid; grid-template-columns: 320px 1fr; height: calc(100vh - 57px); }
+  #lista { border-right:1px solid var(--line); overflow:auto; }
+  .item { padding:10px 14px; border-bottom:1px solid var(--line); cursor:pointer; display:flex; gap:10px; align-items:center; }
+  .item:hover, .item.sel { background:var(--card); }
+  .item img { width:56px; height:42px; object-fit:cover; border-radius:4px; }
+  .item .t { font-size:13px; line-height:1.3; }
+  .item .p { font-size:12px; color:var(--mut); }
+  #det { overflow:auto; padding:20px 24px; }
+  .fotos { display:grid; grid-template-columns: repeat(auto-fill, minmax(110px,1fr)); gap:8px; }
+  .f { position:relative; border:2px solid transparent; border-radius:6px; overflow:hidden; cursor:pointer; aspect-ratio: 4/5; background:#000; }
+  .f img { width:100%; height:100%; object-fit:cover; display:block; opacity:.45; }
+  .f.on { border-color:var(--acc); }
+  .f.on img { opacity:1; }
+  .f .n { position:absolute; top:4px; left:4px; background:var(--acc); color:#fff; font-size:12px; font-weight:700; border-radius:10px; min-width:20px; height:20px; display:none; align-items:center; justify-content:center; padding:0 5px; }
+  .f.on .n { display:flex; }
+  textarea { width:100%; min-height:260px; background:var(--card); color:var(--tx); border:1px solid var(--line); border-radius:6px; padding:10px; font:14px/1.45 system-ui, sans-serif; }
+  .row { display:flex; gap:16px; align-items:center; margin:14px 0; flex-wrap:wrap; }
+  button { background:var(--acc); color:#fff; border:0; border-radius:6px; padding:10px 18px; font-size:14px; font-weight:600; cursor:pointer; }
+  button:disabled { opacity:.5; cursor:default; }
+  button.sec { background:transparent; border:1px solid var(--line); color:var(--tx); }
+  label { font-size:14px; }
+  h2 { font-size:17px; margin:0 0 4px; }
+  .mut { color:var(--mut); font-size:13px; }
+  #res { margin-top:14px; font-size:14px; white-space:pre-wrap; }
+  .ok { color:var(--ok); } .err { color:var(--err); }
+  #login { max-width:340px; margin:80px auto; display:flex; flex-direction:column; gap:10px; }
+  #login input { padding:10px; border-radius:6px; border:1px solid var(--line); background:var(--card); color:var(--tx); font-size:15px; }
+</style>
+</head>
+<body>
+<header><h1>Rossmann · Publicar en Instagram y Facebook</h1><span class="st" id="conn"></span></header>
+
+<form id="login" hidden>
+  <h2>Acceso</h2>
+  <input type="password" id="pw" placeholder="Clave de administración" autocomplete="current-password" />
+  <button type="submit">Entrar</button>
+  <span class="err" id="lerr"></span>
+</form>
+
+<main id="app" hidden>
+  <div id="lista"></div>
+  <div id="det"><p class="mut">Elige un auto de la lista.</p></div>
+</main>
+
+<script>
+const KEY = "rossmann_admin_key";
+let key = null;
+try { key = localStorage.getItem(KEY); } catch (e) {}
+let autos = [], actual = null, seleccion = [];
+
+const api = (path, opts = {}) =>
+  fetch(path, { ...opts, headers: { "Content-Type": "application/json", "x-admin-key": key, ...(opts.headers || {}) } });
+
+async function iniciar() {
+  const r = await api("/api/admin-stock");
+  if (r.status === 401) { mostrarLogin(); return; }
+  const j = await r.json();
+  autos = j.autos;
+  document.getElementById("login").hidden = true;
+  document.getElementById("app").hidden = false;
+  pintarLista();
+  api("/api/publicar").then(r => r.json()).then(j => {
+    document.getElementById("conn").innerHTML = j.ok
+      ? `<span class="ok">Conectado a Meta · ${j.pagina}${j.instagram ? " + Instagram" : " (sin Instagram)"}</span>`
+      : `<span class="err">Meta no conectado: ${j.error}</span>`;
+  });
+}
+
+function mostrarLogin() {
+  document.getElementById("app").hidden = true;
+  document.getElementById("login").hidden = false;
+}
+
+document.getElementById("login").addEventListener("submit", (e) => {
+  e.preventDefault();
+  key = document.getElementById("pw").value;
+  try { localStorage.setItem(KEY, key); } catch (e) {}
+  iniciar();
+});
+
+function pintarLista() {
+  const el = document.getElementById("lista");
+  el.innerHTML = autos.map(a => `
+    <div class="item" data-id="${a.id}">
+      <img src="${a.fotos[0] || ""}" alt="">
+      <div><div class="t">${a.titulo}</div><div class="p">${a.precio} · ${a.estado || ""}</div></div>
+    </div>`).join("");
+  el.querySelectorAll(".item").forEach(it => it.onclick = () => abrir(it.dataset.id));
+}
+
+function abrir(id) {
+  actual = autos.find(a => a.id === id);
+  seleccion = actual.fotos.slice(0, 10);
+  document.querySelectorAll(".item").forEach(i => i.classList.toggle("sel", i.dataset.id === id));
+  const d = document.getElementById("det");
+  d.innerHTML = `
+    <h2>${actual.titulo}</h2>
+    <p class="mut">Haz clic en las fotos para elegir hasta 10. El número indica el orden del carrusel. La primera es la portada.</p>
+    <div class="fotos" id="fotos"></div>
+    <div class="row"><span class="mut" id="cuenta"></span>
+      <button class="sec" id="b10">Primeras 10</button><button class="sec" id="b0">Quitar todas</button></div>
+    <textarea id="cap">${actual.caption.replace(/</g, "&lt;")}</textarea>
+    <div class="row">
+      <label><input type="checkbox" id="dIg" checked> Instagram</label>
+      <label><input type="checkbox" id="dFb" checked> Facebook</label>
+      <button id="pub">Publicar</button>
+    </div>
+    <div id="res"></div>`;
+  document.getElementById("b10").onclick = () => { seleccion = actual.fotos.slice(0, 10); pintarFotos(); };
+  document.getElementById("b0").onclick = () => { seleccion = []; pintarFotos(); };
+  document.getElementById("pub").onclick = publicar;
+  pintarFotos();
+}
+
+function pintarFotos() {
+  const el = document.getElementById("fotos");
+  el.innerHTML = actual.fotos.map(f => {
+    const i = seleccion.indexOf(f);
+    return `<div class="f ${i >= 0 ? "on" : ""}" data-f="${f}"><img src="${f}" loading="lazy"><span class="n">${i + 1}</span></div>`;
+  }).join("");
+  el.querySelectorAll(".f").forEach(x => x.onclick = () => {
+    const f = x.dataset.f, i = seleccion.indexOf(f);
+    if (i >= 0) seleccion.splice(i, 1);
+    else if (seleccion.length < 10) seleccion.push(f);
+    pintarFotos();
+  });
+  document.getElementById("cuenta").textContent = `${seleccion.length} de 10 fotos elegidas`;
+}
+
+async function publicar() {
+  const destinos = [];
+  if (document.getElementById("dIg").checked) destinos.push("instagram");
+  if (document.getElementById("dFb").checked) destinos.push("facebook");
+  if (!destinos.length || !seleccion.length) return;
+  const b = document.getElementById("pub"), res = document.getElementById("res");
+  b.disabled = true; res.textContent = "Publicando… (puede tardar hasta un minuto)";
+  try {
+    const r = await api("/api/publicar", { method: "POST", body: JSON.stringify({
+      id: actual.id, fotos: seleccion, caption: document.getElementById("cap").value, destinos }) });
+    const j = await r.json();
+    res.innerHTML = Object.entries(j).map(([k, v]) => v.ok
+      ? `<div class="ok">✔ ${k}: publicado — <a href="${v.link}" target="_blank" style="color:inherit">${v.link}</a></div>`
+      : `<div class="err">✖ ${k}: ${v.error}</div>`).join("") || `<div class="err">${j.error || "Error"}</div>`;
+  } catch (e) {
+    res.innerHTML = `<div class="err">Error: ${e.message}</div>`;
+  }
+  b.disabled = false;
+}
+
+if (key) iniciar(); else mostrarLogin();
+</script>
+</body>
+</html>
